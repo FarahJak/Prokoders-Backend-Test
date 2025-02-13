@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Services;
+
+use App\Http\Resources\Auth\LoginResource;
+use App\Models\User;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Facades\Hash;
+use JsonException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+class AuthService
+{
+    protected User $model;
+
+    public function __construct(User $model)
+    {
+        $this->model = $model;
+    }
+    public function loginHandler(array $data)
+    {
+        $user =  $this->model::Where('email', $data['email'])->first();
+
+        if ($user) {
+            if (Hash::check($data['password'], $user->password)) {
+
+                $token = $user->createToken($user->email)->plainTextToken;
+
+                $result = [
+                    'token'      => $token,
+                    'user'       => new LoginResource($user)
+                ];
+
+                return $result;
+            } else {
+                throw new AuthenticationException();
+            }
+        } else {
+            throw new NotFoundHttpException('Not Found');
+        }
+    }
+
+    public function logoutHandler()
+    {
+        $user = request()->user('users');
+
+        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+
+        return true;
+    }
+}
