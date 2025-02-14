@@ -1,0 +1,2228 @@
+{
+	"info": {
+		"_postman_id": "dd9d9290-d202-4338-976a-595ec2a63be5",
+		"name": "ProkodersTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15105057"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var body = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set('USER_TOKEN' , body.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "user1@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{LOCAL}}/{{AUTH}}/login",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{AUTH}}",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "user1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{LOCAL}}/{{AUTH}}/login",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{AUTH}}",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:35:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:35:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"token\": \"1|J68JkT3EtVUUfZzfX87Ndd2HivCJ7CXPAsQ8J7046afe3767\",\n        \"user\": {\n            \"name\": \"TestUser1\",\n            \"email\": \"user1@test.com\"\n        }\n    },\n    \"message\": \"Logged In Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{AUTH}}/logout",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{AUTH}}",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{AUTH}}/logout",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{AUTH}}",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:24:35 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:24:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Logged Out Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{USERS}}",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{USERS}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Index",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{USERS}}",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{USERS}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 11:07:45 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 11:07:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"TestUser1\",\n            \"email\": \"user1@test.com\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"TestUser2\",\n            \"email\": \"user2@test.com\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"TestUser3\",\n            \"email\": \"user3@test.com\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"TestUser4\",\n            \"email\": \"user4@test.com\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"TestUser5\",\n            \"email\": \"user5@test.com\"\n        }\n    ],\n    \"message\": \"All Data Retrieved successfully\",\n    \"status\": true,\n    \"pagination\": {\n        \"current_page\": 1,\n        \"total\": 5,\n        \"number_pages\": 1,\n        \"items_per_page\": 5\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{USERS}}/1",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{USERS}}",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{USERS}}/1",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{USERS}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 11:18:42 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 11:18:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"TestUser1\",\n        \"email\": \"user1@test.com\"\n    },\n    \"message\": \"Data Retrieved successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "new user",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "newuser@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{LOCAL}}/{{USERS}}",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{USERS}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Store",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "new user",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "newuser@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{LOCAL}}/{{USERS}}",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{USERS}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 11:54:49 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 11:54:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Storeded Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "New User Edited",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "newuser@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{LOCAL}}/{{USERS}}/1?_method=PUT",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{USERS}}",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PUT"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "New User Edited",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "newuser@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{LOCAL}}/{{USERS}}/6?_method=PUT",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{USERS}}",
+										"6"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:03:00 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:03:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Updated Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{USERS}}/2",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{USERS}}",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{USERS}}/2",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{USERS}}",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:03:40 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:03:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Deleted Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{TASKS}}",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{TASKS}}"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "in_progress",
+									"description": "[pending,in_progress,completed]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Index",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{TASKS}}",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{TASKS}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:37:23 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:37:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Test Title 1\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Test Title 2\",\n            \"status\": \"in_progress\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Test Title 3\",\n            \"status\": \"completed\"\n        }\n    ],\n    \"message\": \"All Data Retrieved successfully\",\n    \"status\": true,\n    \"pagination\": {\n        \"current_page\": 1,\n        \"total\": 3,\n        \"number_pages\": 1,\n        \"items_per_page\": 3\n    }\n}"
+						},
+						{
+							"name": "Index + Filtration",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{TASKS}}?title=1",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{TASKS}}"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "1"
+										},
+										{
+											"key": "status",
+											"value": "in_progress",
+											"description": "[pending,in_progress,completed]",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:40:29 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:40:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Test Title 1\",\n            \"status\": \"pending\"\n        }\n    ],\n    \"message\": \"All Data Retrieved successfully\",\n    \"status\": true,\n    \"pagination\": {\n        \"current_page\": 1,\n        \"total\": 1,\n        \"number_pages\": 1,\n        \"items_per_page\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{TASKS}}/1",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{TASKS}}",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{TASKS}}/1",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{TASKS}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:23:21 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:23:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Test Title 1\",\n        \"description\": \"Test Test Test Test Test Test Test Test Test\",\n        \"status\": \"pending\",\n        \"subtasks\": [\n            {\n                \"id\": 1,\n                \"title\": \"SubTask 1-1\",\n                \"status\": \"pending\"\n            },\n            {\n                \"id\": 2,\n                \"title\": \"SubTask 1-2\",\n                \"status\": \"pending\"\n            },\n            {\n                \"id\": 3,\n                \"title\": \"SubTask 1-3\",\n                \"status\": \"pending\"\n            }\n        ],\n        \"created_at\": \"34 seconds ago\"\n    },\n    \"message\": \"Data Retrieved successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Test By Farah",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is a test Task , has been done as a test for laravel",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{LOCAL}}/{{TASKS}}",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{TASKS}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Store",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Test By Farah",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "This is a test Task , has been done as a test for laravel",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{LOCAL}}/{{TASKS}}",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{TASKS}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:42:49 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:42:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Storeded Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Test By Farah edited",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is a test Task , has been done as a test for laravel , the description after editing",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "in_progress",
+									"description": "[pending,in_progress,completed]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{LOCAL}}/{{TASKS}}/1?_method=Put",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{TASKS}}",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "Put"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Test By Farah edited",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "This is a test Task , has been done as a test for laravel , the description after editing",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "in_progress",
+											"description": "[pending,in_progress,completed]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{LOCAL}}/{{TASKS}}/1?_method=Put",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{TASKS}}",
+										"1"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "Put"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:43:33 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:43:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Updated Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{TASKS}}/4",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{TASKS}}",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{TASKS}}/4",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{TASKS}}",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:44:09 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Feb 2025 12:44:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Deleted Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Subtasks",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{SUBTASKS}}?task_id=2",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{SUBTASKS}}"
+							],
+							"query": [
+								{
+									"key": "task_id",
+									"value": "2"
+								},
+								{
+									"key": "title",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "in_progress",
+									"description": "[pending,in_progress,completed]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Index",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{SUBTASKS}}",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{SUBTASKS}}"
+									],
+									"query": [
+										{
+											"key": "task_id",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "in_progress",
+											"description": "[pending,in_progress,completed]",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:01:10 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:01:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"SubTask 1-1\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"SubTask 1-2\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"SubTask 1-3\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 4,\n            \"title\": \"SubTask 2-1\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 5,\n            \"title\": \"SubTask 2-2\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 6,\n            \"title\": \"SubTask 2-3\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 7,\n            \"title\": \"SubTask 3-1\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 8,\n            \"title\": \"SubTask 3-2\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 9,\n            \"title\": \"SubTask 3-3\",\n            \"status\": \"pending\"\n        }\n    ],\n    \"message\": \"All Data Retrieved successfully\",\n    \"status\": true,\n    \"pagination\": {\n        \"current_page\": 1,\n        \"total\": 9,\n        \"number_pages\": 1,\n        \"items_per_page\": 9\n    }\n}"
+						},
+						{
+							"name": "Index + Filtration",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{SUBTASKS}}?task_id=2",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{SUBTASKS}}"
+									],
+									"query": [
+										{
+											"key": "task_id",
+											"value": "2"
+										},
+										{
+											"key": "title",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "in_progress",
+											"description": "[pending,in_progress,completed]",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:06:06 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:06:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"title\": \"SubTask 2-1\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 5,\n            \"title\": \"SubTask 2-2\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": 6,\n            \"title\": \"SubTask 2-3\",\n            \"status\": \"pending\"\n        }\n    ],\n    \"message\": \"All Data Retrieved successfully\",\n    \"status\": true,\n    \"pagination\": {\n        \"current_page\": 1,\n        \"total\": 3,\n        \"number_pages\": 1,\n        \"items_per_page\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{SUBTASKS}}/3",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{SUBTASKS}}",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{SUBTASKS}}/3",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{SUBTASKS}}",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:06:42 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:06:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 3,\n        \"title\": \"SubTask 1-3\",\n        \"description\": \"Test Test Test Test Test Test Test Test Test\",\n        \"status\": \"pending\",\n        \"created_at\": \"1 hour ago\"\n    },\n    \"message\": \"Data Retrieved successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "new task for 1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is a test Task , has been done as a test for laravel",
+									"type": "text"
+								},
+								{
+									"key": "task_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{LOCAL}}/{{SUBTASKS}}",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{SUBTASKS}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Store",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "new task for 1",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "This is a test Task , has been done as a test for laravel",
+											"type": "text"
+										},
+										{
+											"key": "task_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{LOCAL}}/{{SUBTASKS}}",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{SUBTASKS}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:07:29 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:07:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Storeded Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Test By Farah edited",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "This is a test Task , has been done as a test for laravel , the description after editing",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "completed",
+									"description": "[pending,in_progress,completed]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{LOCAL}}/{{SUBTASKS}}/3?_method=Put",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{SUBTASKS}}",
+								"3"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "Put"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Test By Farah edited",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "This is a test Task , has been done as a test for laravel , the description after editing",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "in_progress",
+											"description": "[pending,in_progress,completed]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{LOCAL}}/{{SUBTASKS}}/10?_method=Put",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{SUBTASKS}}",
+										"10"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "Put"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:08:54 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:08:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Updated Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/{{SUBTASKS}}/9",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"{{SUBTASKS}}",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL}}/{{SUBTASKS}}/9",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"{{SUBTASKS}}",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:24:09 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Feb 2025 12:24:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Data Deleted Successfully\",\n    \"status\": true,\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "LOCAL",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "USER_TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "AUTH",
+			"value": "auth",
+			"type": "string"
+		},
+		{
+			"key": "USERS",
+			"value": "users",
+			"type": "string"
+		},
+		{
+			"key": "TASKS",
+			"value": "tasks",
+			"type": "string"
+		},
+		{
+			"key": "SUBTASKS",
+			"value": "subtasks",
+			"type": "default"
+		}
+	]
+}
