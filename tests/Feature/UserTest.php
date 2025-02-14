@@ -9,12 +9,12 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    use RefreshDatabase;  // This trait will ensure the database is reset for each test
+    use RefreshDatabase;
 
-    public function testAuthenticatedUserCanCreateNewUser()
+    public function test_authenticated_user_can_create_new_user()
     {
         $adminUser = User::factory()->create([
-            'email'    => 'admin@example.com',
+            'email'    => 'admin1@example.com',
             'password' => Hash::make('password'),
         ]);
 
