@@ -32,7 +32,7 @@ This guide provides instructions on how to set up and run the Laravel applicatio
          ```
      
 - File attached for Postman collection for the Api Endpoints:
-[View my JSON file](https://github.com/user-attachments/files/18804333/ProkodersTest.postman_collection.json)
+[Download the JSON file](https://github.com/user-attachments/files/18804333/ProkodersTest.postman_collection.json)
 
 - The image below is showing the Email Notification that sent to the associated user When All Subtasks Are Completed:
   ![image_2025-02-14_23-34-04](https://github.com/user-attachments/assets/bf3ffe2d-65dd-4388-886d-ba616d376522)
