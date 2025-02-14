@@ -32,6 +32,6 @@ This guide provides instructions on how to set up and run the Laravel applicatio
          ```
      
 -  Step 4: File attached for Postman collection for the Api Endpoints:
-
+[View my JSON file](ProkodersTest.postman_collection.json)
 
 -  Step 5: The image below is showing the Real-Time Notifications using pusher whenever a task's status is updated:
